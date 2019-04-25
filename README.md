@@ -47,6 +47,7 @@ With these fasta file and necessary arguments, you can add them in the database 
 If you don't have the genome_ref_taxid file, you must give GCF and the taxon ID with the fasta file to insert them into database.
 
 Then, create a loop in bash to launch *crispr_workflow_add.sh* . You must give :
+
 | Variable    |                     Definition                    |
 |-------------|:-------------------------------------------------:|
 | $TAXID      |                    Taxonomy ID                    |
