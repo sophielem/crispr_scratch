@@ -67,7 +67,6 @@ If you don't have the genome_ref_taxid file, you must give GCF and the taxon ID 
 
 Then, create a loop in bash to launch *crispr_workflow_add.sh* . You must give :
 
-<<<<<<< HEAD
 | Variable                 |                     Definition                    |
 |--------------------------|:-------------------------------------------------:|
 | $CRISPR_TOOL_SCRIPT_PATH |               The path to crispr scripts          |
@@ -87,23 +86,6 @@ Then, create a loop in bash to launch *crispr_workflow_add.sh* . You must give :
 
 
 ## Taxon Database
-=======
-| Variable    |                     Definition                    |
-|-------------|:-------------------------------------------------:|
-| $TAXID      |                    Taxonomy ID                    |
-| $GCF        |                GCF of the organism                |
-| $INFO_FILE  | Name of the file to insert into Taxonomy Database |
-| $URL_TAXON  |         End_point to the Taxonomy Database        |
-| $DB_NAME    |           Name of the Taxonomy Database           |
-| $ORG_NAME   |                Name of the organism               |
-| $FASTA_FILE |               Name of the fasta file              |
-| $rfg        |          Path to the plain file Database          |
-| $URL_CRISPR |          End_point to the CRISPR Database         |
-| $MAP_FILE   |      The Mapping file for the CRISPR Database     |
-
-
-## Create Taxon Database
->>>>>>> c76b98a1d87f12b1cc32a7f55d3a4bc37508cf2a
 
 1. open Apache couchDB app
 2. Create the database
