@@ -20,14 +20,16 @@
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
 			<script src="/socket.io/socket.io.js"></script>
 		      <script>
-		      		var socket = io.connect('http://localhost:8080')
+		      		var socket = io.connect('http://localhost:8888')
 
             	socket.on('connect', function() {
 									console.log('connected');
                 	socket.emit('clientConnection', {data: 'I\'m connected!'});
-            });
+									displayTreeIn('')
+									displayTreeNotIn('')
+						});
 
-						
+
 						function displayTreeIn(suffix){
 
 							var to = false;
@@ -84,106 +86,6 @@
 								"plugins" : [ "wholerow" , "checkbox" , "search" , "dnd" , "types"]
 							});
 							$('#tree_exclude'+suffix).jstree().show_dots();
-						}
-
-
-						function selectOnTreeInAG(data){
-							for(m = 0, n = includeIdListAG.length; m < n; m++) {
-								disabledExcAG.push(includeIdListAG[m].replace('j1','j2'));
-							}
-							$("#tree_exclude").jstree().enable_node(disabledExcAG);
-
-							includeIdListAG = data.selected
-							disabledExcAG = []
-							for(m = 0, n = includeIdListAG.length; m < n; m++) {
-								disabledExcAG.push(includeIdListAG[m].replace('j1','j2'));
-								}
-							$("#tree_exclude").jstree().disable_node(disabledExcAG);
-
-							includeNameListAG = [];
-							for(i = 0, j = includeIdListAG.length; i < j; i++) {
-								includeNameListAG.push(data.instance.get_node(includeIdListAG[i]).text);
-							};
-
-							notSelectedIdInAG=[]
-							for(i=0;i<excludeIdListAG.length;i++){
-								notSelectedIdInAG.push(excludeIdListAG[i].replace('j2','j1'))
-							}
-							$('#tree_include').jstree(true).uncheck_node(notSelectedIdInAG);
-						}
-
-						function selectOnTreeInSG(data){
-							for(m = 0, n = includeIdListSG.length; m < n; m++) {
-								disabledExcSG.push(includeIdListSG[m].replace('j3','j4'));
-							}
-							$("#tree_exclude_sg").jstree().enable_node(disabledExcSG);
-
-							includeIdListSG = data.selected
-							disabledExcSG = []
-							for(m = 0, n = includeIdListSG.length; m < n; m++) {
-								disabledExcSG.push(includeIdListSG[m].replace('j3','j4'));
-								}
-							$("#tree_exclude_sg").jstree().disable_node(disabledExcSG);
-
-							includeNameListSG = [];
-							for(i = 0, j = includeIdListSG.length; i < j; i++) {
-								includeNameListSG.push(data.instance.get_node(includeIdListSG[i]).text);
-							};
-
-							notSelectedIdInSG=[]
-							for(i=0;i<excludeIdListSG.length;i++){
-								notSelectedIdInSG.push(excludeIdListSG[i].replace('j4','j2'))
-							}
-							$('#tree_include_sg').jstree(true).uncheck_node(notSelectedIdInSG);
-						}
-
-
-						function selectOnTreeNotInAG(data){
-							for(m = 0, n = excludeIdListAG.length; m < n; m++) {
-								disabledIncAG.push(excludeIdListAG[m].replace('j2','j1'));
-							}
-							$("#tree_include").jstree().enable_node(disabledIncAG);
-							excludeIdListAG = data.selected
-							disabledIncAG = []
-							for(m = 0, n = excludeIdListAG.length; m < n; m++) {
-								disabledIncAG.push(excludeIdListAG[m].replace('j2','j1'));
-							}
-							$("#tree_include").jstree().disable_node(disabledIncAG);
-							excludeNameListAG = [];
-							for(i = 0, j = excludeIdListAG.length; i < j; i++) {
-								excludeNameListAG.push(data.instance.get_node(excludeIdListAG[i]).text);
-							};
-
-							notSelectedIdNotInAG=[]
-							for(i=0;i<includeIdListAG.length;i++){
-								notSelectedIdNotInAG.push(includeIdListAG[i].replace('j1','j2'))
-							}
-							$('#tree_exclude').jstree(true).uncheck_node(notSelectedIdNotInAG);
-
-						}
-
-						function selectOnTreeNotInSG(data){
-							for(m = 0, n = excludeIdListSG.length; m < n; m++) {
-								disabledIncSG.push(excludeIdListSG[m].replace('j4','j3'));
-							}
-							$("#tree_include_sg").jstree().enable_node(disabledIncSG);
-							excludeIdListSG = data.selected
-							disabledIncSG = []
-							for(m = 0, n = excludeIdListSG.length; m < n; m++) {
-								disabledIncSG.push(excludeIdListSG[m].replace('j4','j3'));
-							}
-							$("#tree_include_sg").jstree().disable_node(disabledIncSG);
-							excludeNameListSG = [];
-							for(i = 0, j = excludeIdListSG.length; i < j; i++) {
-								excludeNameListSG.push(data.instance.get_node(excludeIdListSG[i]).text);
-							};
-
-							notSelectedIdNotInSG=[]
-							for(i=0;i<includeIdListSG.length;i++){
-								notSelectedIdNotInSG.push(includeIdListSG[i].replace('j3','j4'))
-							}
-							$('#tree_exclude_sg').jstree(true).uncheck_node(notSelectedIdNotInSG);
-
 						}
 
         	</script>
