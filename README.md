@@ -86,7 +86,7 @@ Then, create a loop in bash to launch *crispr_workflow_add.sh* . You must give :
 
 
 ## Taxon Database
-
+#### Create it
 1. open Apache couchDB app
 2. Create the database
 ```sh
@@ -101,8 +101,16 @@ python create_file_taxondb.py -file genome_ref_taxid.json
 python couchBuild.py taxon_db --url http://127.0.0.1:5984 --data path_folder
 ```
 
-## Tree Database
+#### Structure
+taxonID { </br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;__GCF__ : list_gcf <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;__current__ : GCF_shown on website <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;__date__ : year-month-day hh:min <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;__user__ : MMSB<br>
+}
 
+## Tree Database
+#### Create it
 1. open Apache couchDB app
 2. Create the database
 ```sh
@@ -117,3 +125,11 @@ python lib/maxi_tree.py -file genome_ref_taxid.json
 ```sh
 python couchBuild.py taxon_tree_db --url http://127.0.0.1:5984 --data path_folder
 ```
+
+#### Structure
+Only one document is found in this database. The tree can be modified using the class MaxiTree. Then, you can dump it in a pickle file and update the database.
+
+maxi_tree { </br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;__tree__ : Tree with organism name and their taxonID if present in *Json* string. This string is composed of 2 keys : 'text' and 'children'. 'Children' is only present if the node has a list of children <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;__date__ : year-month-day hh:min <br>
+}
