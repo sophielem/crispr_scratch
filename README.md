@@ -108,9 +108,10 @@ python couchBuild.py taxon_db --url http://127.0.0.1:5984 --data path_folder
 ```sh
 curl -X PUT http://127.0.0.1:5984/taxon_tree_db
 ```
-3. Create the MaxiTree json file with the python script
+3. Create the MaxiTree json file with the python script from the genome_ref_taxid.json file or from the taxon database created giving the end point.
 ```sh
 python lib/maxi_tree.py -file genome_ref_taxid.json
+python lib/maxi_tree.py -url http://127.0.0.1:5984/taxon_db
 ```
 4. Move the created json file in an empty folder
 5. Fill the database
